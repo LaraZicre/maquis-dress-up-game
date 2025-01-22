@@ -11,16 +11,53 @@ export class Preload extends Phaser.Scene {
         this.load.image("character", "assets/base.png");
         this.load.image("hair", "assets/pelo.png");
         this.load.image("background", "assets/fondo.png");
+        this.load.image("background0", "assets/fondo0.png");
+        this.load.image("background1", "assets/fondo1.png");
+        this.load.image("background2", "assets/fondo2.png");
+        this.load.image("background3", "assets/fondo3.png");
+        this.load.image("background4", "assets/fondo4.png");
+        this.load.image("background5", "assets/fondo5.png");
+        this.load.image("background6", "assets/fondo6.png");
+        this.load.image("background7", "assets/fondo7.png");
+        this.load.image("background8", "assets/fondo8.png");
+        this.load.image("background9", "assets/fondo9.png");
+        this.load.image("background10", "assets/fondo10.png");
+        this.load.image("background11", "assets/fondo11.png");
+        this.load.image("background12", "assets/fondo12.png");
+        this.load.image("background13", "assets/fondo13.png");
+        this.load.image("menubackground", "assets/fondomenu.png");
+        //ventanas
         this.load.image("window", "assets/ventana.png");
+        this.load.image("window0", "assets/ventana0.png");
+        this.load.image("window1", "assets/ventana1.png");
+        this.load.image("window2", "assets/ventana2.png");
+        this.load.image("window3", "assets/ventana3.png");
+        this.load.image("window4", "assets/ventana4.png");
+        this.load.image("window5", "assets/ventana5.png");
+        this.load.image("window6", "assets/ventana6.png");
+        this.load.image("window7", "assets/ventana7.png");
+        this.load.image("window8", "assets/ventana8.png");
+        this.load.image("window9", "assets/ventana9.png");
+        this.load.image("window10", "assets/ventana10.png");
+        this.load.image("window11", "assets/ventana11.png");
+        this.load.image("window12", "assets/ventana12.png");
+        this.load.image("window13", "assets/ventana13.png");
+        this.load.image("window14", "assets/ventana14.png");
+        this.load.image("window15", "assets/ventana15.png");
+        this.load.image("window16", "assets/ventana16.png");
         //makeup
         this.load.image("eyeshadow0", "assets/sombra0.png");
         this.load.image("eyeshadow1", "assets/sombra1.png");
+        this.load.image("eyeshadow2", "assets/sombra2.png");
+        this.load.image("eyeshadow3", "assets/sombra3.png");
+        this.load.image("eyeshadow4", "assets/sombra4.png");
         this.load.image("lips0", "assets/boca0.png");
         this.load.image("lips1", "assets/boca1.png");
         this.load.image("lips2", "assets/boca2.png");
         this.load.image("lips3", "assets/boca3.png");
         this.load.image("deco0", "assets/cachetes0.png");
         this.load.image("deco1", "assets/cachetes1.png");
+        this.load.image("deco2", "assets/cachetes2.png");
         //tops
         this.load.image("oversize0", "assets/over0.png");
         this.load.image("oversize1", "assets/over1.png");
@@ -28,6 +65,13 @@ export class Preload extends Phaser.Scene {
         this.load.image("oversize3", "assets/over3.png");
         this.load.image("oversize4", "assets/over4.png");
         this.load.image("oversize5", "assets/over5.png");
+        //bras
+        this.load.image("bra0", "assets/corpiño0.png");
+        this.load.image("bra1", "assets/corpiño1.png");
+        this.load.image("bra2", "assets/corpiño2.png");
+        this.load.image("bra3", "assets/corpiño3.png");
+        this.load.image("bra4", "assets/corpiño4.png");
+        //tops
         this.load.image("top0", "assets/top0.png");
         this.load.image("top1", "assets/top1.png");
         this.load.image("top2", "assets/top2.png");
@@ -107,13 +151,36 @@ export class Preload extends Phaser.Scene {
         this.load.image("acc1", "assets/acc1.png");
         this.load.image("acc2", "assets/acc2.png");
         this.load.image("acc3", "assets/acc3.png");
+
+        this.load.image("acc4", "assets/acc4.png");
+        this.load.image("acc5", "assets/acc5.png");
+        this.load.image("acc6", "assets/acc6.png");
+        this.load.image("acc7", "assets/acc7.png");
+        this.load.image("acc8", "assets/acc8.png");
         //corset
         this.load.image("corset", "assets/corset.png");
+        this.load.image("corset0", "assets/corset0.png");
+        this.load.image("corset1", "assets/corset1.png");
+        this.load.image("corset2", "assets/corset2.png");
+        //neck
+        this.load.image("scarf0", "assets/bufanda0.png");
+        this.load.image("scarf1", "assets/bufanda1.png");
+        this.load.image("scarf2", "assets/bufanda2.png");
+        this.load.image("scarf3", "assets/bufanda3.png");
+        this.load.image("scarf4", "assets/bufanda4.png");
+        //head
+        this.load.image("head0", "assets/auris0.png");
+        this.load.image("head1", "assets/auris1.png");
+        this.load.image("head2", "assets/auris2.png");
+        this.load.image("head3", "assets/auris3.png");
+        this.load.image("head4", "assets/auris4.png");
         //glassess
         this.load.image("glassess0", "assets/lentes0.png");
         this.load.image("glassess1", "assets/lentes1.png");
         //audio
         this.load.audio("backgroundMusic", "audio/dressupmaquislofi.mp3");
+        this.load.audio("spongebobsfx", "audio/Spongebob Stinky Sound Effect.mp3");
+        this.load.audio("clicksfx", "audio/click.mp3");
         //imgen invisible
         this.load.image("empty", "assets/invisible.png");
         //UI
@@ -129,12 +196,18 @@ export class Preload extends Phaser.Scene {
         this.load.image("buttonacc1", "assets/botonjoyas1.png");
         this.load.image("buttonextra0", "assets/botonextras0.png");
         this.load.image("buttonextra1", "assets/botonextras1.png");
+        this.load.image("buttonwindow0", "assets/botonventana0.png");
+        this.load.image("buttonwindow1", "assets/botonventana1.png");
+        this.load.image("buttonbackground0", "assets/botonfondo0.png");
+        this.load.image("buttonbackground1", "assets/botonfondo1.png");
+        this.load.image("buttonstart0", "assets/botonstart0.png");
+        this.load.image("buttonstart1", "assets/botonstart1.png");
     }
 
     create() { }
 
     update() {
-        this.scene.start("Game");
+        this.scene.start("Menu");
     }
 
 }

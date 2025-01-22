@@ -14,13 +14,102 @@ export class Game extends Phaser.Scene {
             volume: 0.5 // Ajustar el volumen (opcional)
         });
 
+        this.ginosfx = this.sound.add("spongebobsfx");
+
         this.backgroundMusic.play();
 
         // Agrega el personaje y la ropa
-        const background = this.add.image(960, 540, "background");
-        background.setScale(1.5);
-        const window = this.add.image(300, 565, "window");
-        window.setScale(1.5);
+        this.background = [
+
+            { name: "background", x: 960, y: 540 },
+            { name: "background0", x: 960, y: 540 },
+            { name: "background1", x: 960, y: 540 },
+            { name: "background2", x: 960, y: 540 },
+            { name: "background3", x: 960, y: 540 },
+            { name: "background4", x: 960, y: 540 },
+            { name: "background5", x: 960, y: 540 },
+            { name: "background6", x: 960, y: 540 },
+            { name: "background7", x: 960, y: 540 },
+            { name: "background8", x: 960, y: 540 },
+            { name: "background9", x: 960, y: 540 },
+            { name: "background10", x: 960, y: 540 },
+            { name: "background11", x: 960, y: 540 },
+            { name: "background12", x: 960, y: 540 },
+            { name: "background13", x: 960, y: 540 },
+
+        ];
+
+        this.currentBackgroundIndex = 0; // Índice actual del accesorio
+
+        // Mostrar el accesorio inicial
+        const background = this.background[this.currentBackgroundIndex];
+        this.currentBackground = this.add.image(background.x, background.y, background.name);
+
+        // Botón para cambiar accesorio
+        // Crear el botón como sprite interactivo
+        const buttonbc = this.add.sprite(424, 60, "buttonbackground0").setInteractive();
+        buttonbc.setScale(1.5);
+
+        //soltar boton
+        buttonbc.on("pointerup", () => {
+            buttonbc.setTexture("buttonbackground0");
+        });
+
+        //presionar boton
+        buttonbc.on("pointerdown", () => {
+            buttonbc.setTexture("buttonbackground1");
+            this.changeBackground();
+
+        });
+
+        this.window = [
+
+            { name: "window", x: 300, y: 565 },
+            { name: "window0", x: 300, y: 565 },
+            { name: "window1", x: 300, y: 565 },
+            { name: "window2", x: 300, y: 565 },
+            { name: "window3", x: 300, y: 565 },
+            { name: "window4", x: 300, y: 565 },
+            { name: "window5", x: 300, y: 565 },
+            { name: "window6", x: 300, y: 565 },
+            { name: "window7", x: 300, y: 565 },
+            { name: "window8", x: 300, y: 565 },
+            { name: "window9", x: 300, y: 565 },
+            { name: "window10", x: 300, y: 565 },
+            { name: "window11", x: 300, y: 565 },
+            { name: "window12", x: 300, y: 565 },
+            { name: "window13", x: 300, y: 565 },
+            { name: "window14", x: 300, y: 565 },
+            { name: "window15", x: 300, y: 565 },
+            { name: "window16", x: 300, y: 565 },
+
+        ];
+
+        this.currentWindowIndex = 0; // Índice actual del accesorio
+
+        // Mostrar el accesorio inicial
+        const window = this.window[this.currentWindowIndex];
+        this.currentWindow = this.add.image(window.x, window.y, window.name);
+        this.currentWindow.setScale(1.5);
+
+        // Botón para cambiar accesorio
+        // Crear el botón como sprite interactivo
+        const buttonw = this.add.sprite(176, 60, "buttonwindow0").setInteractive();
+        buttonw.setScale(1.5);
+
+        //soltar boton
+        buttonw.on("pointerup", () => {
+            buttonw.setTexture("buttonwindow0");
+        });
+
+        //presionar boton
+        buttonw.on("pointerdown", () => {
+            buttonw.setTexture("buttonwindow1");
+            this.changeWindow();
+
+        });
+
+
         const character = this.add.image(299, 570, "character").setInteractive();
         character.setScale(1.5);
         const hair = this.add.image(280, 272, "hair").setInteractive();
@@ -30,7 +119,6 @@ export class Game extends Phaser.Scene {
         const items = [
 
             {
-
                 type: "stockings",
                 variants: [
 
@@ -51,9 +139,7 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 731, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "socks",
                 variants: [
                     { name: "socks0", sprite: this.add.sprite(1100, 750, "socks0").setInteractive() },
@@ -67,9 +153,7 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 781, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "socksa",
                 variants: [
                     { name: "socks4", sprite: this.add.sprite(900, 790, "socks4").setInteractive() },
@@ -80,7 +164,6 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 848, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
 
                 type: "socksb",
@@ -93,7 +176,6 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 882, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
                 type: "skirts",
                 variants: [
@@ -115,9 +197,7 @@ export class Game extends Phaser.Scene {
                 ],
 
                 targetZone: this.add.zone(280, 543, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
-
             },
-
             {
                 type: "jeans",
                 variants: [
@@ -130,9 +210,7 @@ export class Game extends Phaser.Scene {
                 ],
 
                 targetZone: this.add.zone(280, 560, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
-
             },
-
             {
                 type: "jeansa",
                 variants: [
@@ -144,21 +222,29 @@ export class Game extends Phaser.Scene {
                 ],
 
                 targetZone: this.add.zone(280, 669, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
-
             },
+            {
+                type: "bras",
+                variants: [
+                    { name: "bra0", sprite: this.add.sprite(1080, 350, "bra0").setInteractive() },
+                    { name: "bra1", sprite: this.add.sprite(1120, 350, "bra1").setInteractive() },
+                    { name: "bra2", sprite: this.add.sprite(1160, 350, "bra2").setInteractive() },
+                    { name: "bra3", sprite: this.add.sprite(1200, 350, "bra3").setInteractive() },
+                    { name: "bra4", sprite: this.add.sprite(1240, 350, "bra4").setInteractive() },
+                ],
 
+                targetZone: this.add.zone(280, 378, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
+            },
             {
                 type: "top",
                 variants: [
-                    { name: "topa", sprite: this.add.sprite(860, 350, "top0").setInteractive() },
-                    { name: "topb", sprite: this.add.sprite(880, 350, "top1").setInteractive() },
-                    { name: "topc", sprite: this.add.sprite(900, 350, "top2").setInteractive() },
+                    { name: "topa", sprite: this.add.sprite(1260, 350, "top0").setInteractive() },
+                    { name: "topb", sprite: this.add.sprite(1280, 350, "top1").setInteractive() },
+                    { name: "topc", sprite: this.add.sprite(1300, 350, "top2").setInteractive() },
                 ],
 
                 targetZone: this.add.zone(280, 393, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
-
             },
-
             {
                 type: "tank",
                 variants: [
@@ -171,11 +257,8 @@ export class Game extends Phaser.Scene {
                 ],
 
                 targetZone: this.add.zone(281, 393, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
-
             },
-
             {
-
                 type: "shirta",
                 variants: [
                     { name: "shirt0", sprite: this.add.sprite(950, 200, "shirt0").setInteractive() },
@@ -192,23 +275,20 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 400, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "shirt",
                 variants: [
+                    { name: "over2", sprite: this.add.sprite(1400, 200, "oversize2").setInteractive() },
                     { name: "over4", sprite: this.add.sprite(1450, 200, "oversize4").setInteractive() },
                     { name: "over3", sprite: this.add.sprite(1500, 200, "oversize3").setInteractive() },
-                    { name: "over2", sprite: this.add.sprite(1550, 200, "oversize2").setInteractive() },
+                    { name: "over5", sprite: this.add.sprite(1550, 200, "oversize5").setInteractive() },
                     { name: "over1", sprite: this.add.sprite(1600, 200, "oversize1").setInteractive() },
                     { name: "over0", sprite: this.add.sprite(1650, 200, "oversize0").setInteractive() },
                 ],
 
                 targetZone: this.add.zone(283, 453, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "tomshirt",
                 variants: [
 
@@ -217,9 +297,7 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(283, 448, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "shoesa",
                 variants: [
                     { name: "shoes1", sprite: this.add.sprite(1785, 950, "shoes1").setInteractive() },
@@ -232,9 +310,7 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 905, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "shoesa",
                 variants: [
                     { name: "shoes0", sprite: this.add.sprite(1005, 930, "shoes0").setInteractive() },
@@ -244,9 +320,7 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 875, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
-
             {
-
                 type: "shoesa",
                 variants: [
                     { name: "shoes6", sprite: this.add.sprite(850, 950, "shoes6").setInteractive() },
@@ -257,16 +331,54 @@ export class Game extends Phaser.Scene {
 
                 targetZone: this.add.zone(280, 910, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
             },
+            {
+                type: "socksc",
+                variants: [
+                    { name: "sa0", sprite: this.add.sprite(800, 650, "socksa0").setInteractive() },
+                    { name: "sa1", sprite: this.add.sprite(750, 650, "socksa1").setInteractive() },
 
+                ],
+
+                targetZone: this.add.zone(280, 859, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
+            },
             {
                 type: "corset",
                 variants: [
-                    { name: "corset", sprite: this.add.sprite(700, 350, "corset").setInteractive() },
+                    { name: "corset", sprite: this.add.sprite(1400, 350, "corset").setInteractive() },
+                    { name: "corset0", sprite: this.add.sprite(1450, 350, "corset0").setInteractive() },
+                    { name: "corset1", sprite: this.add.sprite(1500, 350, "corset1").setInteractive() },
+                    { name: "corset2", sprite: this.add.sprite(1550, 350, "corset2").setInteractive() },
 
                 ],
 
                 targetZone: this.add.zone(280, 408, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
+            },
+            {
+                type: "head",
+                variants: [
+                    { name: "head0", sprite: this.add.sprite(800, 350, "head0").setInteractive() },
+                    { name: "head1", sprite: this.add.sprite(820, 350, "head1").setInteractive() },
+                    { name: "head2", sprite: this.add.sprite(840, 350, "head2").setInteractive() },
+                    { name: "head3", sprite: this.add.sprite(860, 350, "head3").setInteractive() },
+                    { name: "head4", sprite: this.add.sprite(880, 350, "head4").setInteractive() },
 
+
+                ],
+
+                targetZone: this.add.zone(280, 240, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
+            },
+            {
+                type: "neck",
+                variants: [
+                    { name: "scarf0", sprite: this.add.sprite(920, 350, "scarf0").setInteractive() },
+                    { name: "scarf1", sprite: this.add.sprite(940, 350, "scarf1").setInteractive() },
+                    { name: "scarf2", sprite: this.add.sprite(960, 350, "scarf2").setInteractive() },
+                    { name: "scarf3", sprite: this.add.sprite(980, 350, "scarf3").setInteractive() },
+                    { name: "scarf4", sprite: this.add.sprite(1000, 350, "scarf4").setInteractive() },
+
+                ],
+
+                targetZone: this.add.zone(280, 380, 100, 100).setRectangleDropZone(20, 20)// Zona del torso
             },
 
         ];
@@ -336,7 +448,6 @@ export class Game extends Phaser.Scene {
 
         //////////////////LABIOS
         this.lipstick = [
-
             { name: "empty", x: 300, y: 200 },
             { name: "lips0", x: 280, y: 298 },
             { name: "lips1", x: 280, y: 298 },
@@ -368,10 +479,12 @@ export class Game extends Phaser.Scene {
 
         ///////////////OJOS SOMBRAS
         this.eyeshadows = [
-
             { name: "empty", x: 300, y: 200 },
             { name: "eyeshadow0", x: 280, y: 259 },
             { name: "eyeshadow1", x: 280, y: 259 },
+            { name: "eyeshadow2", x: 280, y: 259 },
+            { name: "eyeshadow3", x: 280, y: 259 },
+            { name: "eyeshadow4", x: 280, y: 259 },
 
         ];
         this.currentEyeshadowIndex = 0; // Índice actual del accesorio
@@ -398,10 +511,10 @@ export class Game extends Phaser.Scene {
 
         ///////////////DECO
         this.cheeks = [
-
             { name: "empty", x: 300, y: 200 },
             { name: "deco0", x: 280, y: 280 },
             { name: "deco1", x: 305, y: 280 },
+            { name: "deco2", x: 280, y: 245 },
         ];
         this.currentCheekIndex = 0; // Índice actual del accesorio
 
@@ -422,7 +535,6 @@ export class Game extends Phaser.Scene {
         button2.on("pointerdown", () => {
             button2.setTexture("buttondeco1");
             this.changeCheek();
-
         });
 
         ///////////////////GAFAS
@@ -458,7 +570,9 @@ export class Game extends Phaser.Scene {
             { name: "empty", x: 300, y: 200 },
             { name: "acc1", x: 280, y: 340 },
             { name: "acc2", x: 280, y: 330 },
-            { name: "acc3", x: 280, y: 330 }
+            { name: "acc3", x: 280, y: 330 },
+            { name: "acc4", x: 280, y: 360 },
+            { name: "acc5", x: 280, y: 360 }
         ];
         this.currentAccessoryIndex = 0; // Índice actual del accesorio
 
@@ -485,8 +599,10 @@ export class Game extends Phaser.Scene {
         ////////////////////EXTRAS
         this.extras = [
             { name: "empty", x: 300, y: 200 },
-            { name: "acc0", x: 280, y: 298 }
-
+            { name: "acc0", x: 300, y: 500 },
+            { name: "acc6", x: 280, y: 428 },
+            { name: "acc7", x: 456, y: 370 },
+            { name: "acc8", x: 460, y: 364 }
         ];
         this.currentExtraIndex = 0; // Índice actual del accesorio
 
@@ -508,7 +624,11 @@ export class Game extends Phaser.Scene {
             button5.setTexture("buttonextra1");
             this.changeExtras();
         });
-
+        
+        ////////////////////CAPTURAR PANTALLA
+        const screenshotButton = this.add.text(10, 10, 'Capturar Imagen', { fontSize: '20px', fill: '#fff' })
+        .setInteractive()
+        .on('pointerdown', () => this.captureScreenshot(this,57, 89, 485, 951));
     }
 
     changeLips() {
@@ -527,7 +647,6 @@ export class Game extends Phaser.Scene {
         this.currentLips.setScale(1.5);
         this.currentLips.setTexture(Lips.name);
         this.currentLips.setPosition(Lips.x, Lips.y);
-
     }
 
     changeEyeshadow() {
@@ -546,7 +665,7 @@ export class Game extends Phaser.Scene {
         this.currentEyeshadow.setScale(1.5);
         this.currentEyeshadow.setTexture(eyeshadow.name);
         this.currentEyeshadow.setPosition(eyeshadow.x, eyeshadow.y);
-    }
+    }S
 
     changeCheek() {
         // Incrementar el índice del accesorio
@@ -604,7 +723,6 @@ export class Game extends Phaser.Scene {
     }
 
     changeExtras() {
-
         // Incrementar el índice del accesorio
         this.currentExtraIndex++;
 
@@ -620,7 +738,67 @@ export class Game extends Phaser.Scene {
         this.currentExtra.setScale(1.5);
         this.currentExtra.setTexture(extra.name);
         this.currentExtra.setPosition(extra.x, extra.y);
-
     }
 
+    changeBackground() {
+        // Incrementar el índice del accesorio
+        this.currentBackgroundIndex++;
+
+        // Volver al primer accesorio si se supera el último
+        if (this.currentBackgroundIndex >= this.background.length) {
+            this.currentBackgroundIndex = 0;
+        }
+
+        // Obtener el accesorio actual
+        const background = this.background[this.currentBackgroundIndex];
+
+        // Actualizar la textura y posición del accesorio
+        this.currentBackground.setScale(1.5);
+        this.currentBackground.setTexture(background.name);
+        this.currentBackground.setPosition(background.x, background.y);
+    }
+
+    changeWindow() {
+        // Incrementar el índice del accesorio
+        this.currentWindowIndex++;
+
+        // Volver al primer accesorio si se supera el último
+        if (this.currentWindowIndex >= this.window.length) {
+            this.currentWindowIndex = 0;
+        }
+
+        if (this.currentWindowIndex == 6) {
+            this.ginosfx.play();
+        }
+
+        // Obtener el accesorio actual
+        const window = this.window[this.currentWindowIndex];
+
+        // Actualizar la textura y posición del accesorio
+        this.currentWindow.setScale(1.5);
+        this.currentWindow.setTexture(window.name);
+        this.currentWindow.setPosition(window.x, window.y);
+    }
+
+    captureScreenshot(scene, x, y, width, height) {
+        // Usar renderer.snapshot para capturar el área seleccionada
+        scene.game.renderer.snapshot((image) => {
+             // Crear un canvas temporal
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Dibujar la porción de la imagen capturada en el canvas temporal
+            ctx.drawImage(image, x, y, width, height, 0, 0, width, height);
+            
+            // Crear el enlace para descargar la imagen
+            const link = document.createElement("a");
+            link.setAttribute("download", "Maquis UwU.png");
+            link.setAttribute("href", canvas.toDataURL());
+            link.click();
+        });
+    }
+    
 }
