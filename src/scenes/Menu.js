@@ -4,7 +4,11 @@ export class Menu extends Phaser.Scene {
 
     }
 
-    init() { }
+
+    init() {
+        this.escenaActual = "Menu";
+    }
+
 
     create() {
 
@@ -12,6 +16,7 @@ export class Menu extends Phaser.Scene {
         this.click = this.sound.add("clicksfx");
 
         this.playButton();
+        this.CreditsButton();
 
     }
 
@@ -19,7 +24,7 @@ export class Menu extends Phaser.Scene {
 
     playButton() {
         //boton quieto
-        const buttonplay = this.add.sprite(950, 450, "buttonstart0").setInteractive();
+        const buttonplay = this.add.sprite(970, 450, "buttonstart0").setInteractive();
         buttonplay.setScale(1.5);
 
         //presionar boton
@@ -34,6 +39,27 @@ export class Menu extends Phaser.Scene {
             this.scene.start("Game");
         });
 
+    }
+
+    CreditsButton() {
+                //boton quieto
+                const buttoncreditsa = this.add.sprite(970, 530, "buttoncredits2").setInteractive();
+                buttoncreditsa.setScale(1.5);
+        
+                //presionar boton
+                buttoncreditsa.on("pointerdown", () => {
+                    buttoncreditsa.setTexture("buttoncredits3");
+
+                    
+                });
+                //soltar boton
+                buttoncreditsa.on("pointerup", () => {
+                    this.click.play();
+                    buttoncreditsa.setTexture("buttoncredits2");
+                    this.scene.launch("Credits", {
+                        escenaActual: this.escenaActual,
+                    });
+                });
     }
 
 }
