@@ -229,6 +229,9 @@ export class Preload extends Phaser.Scene {
         this.load.image("buttonmenu1", "assets/botonmenu1.png");
         this.load.image("buttonsave0", "assets/botoncaptura0.png");
         this.load.image("buttonsave1", "assets/botoncaptura1.png");
+
+        this.load.image("logo", "assets/logomaquis.png");
+        this.load.image("icon", "assets/icon.png");
     }
 
     create() { }
