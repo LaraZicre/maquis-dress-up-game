@@ -9,12 +9,12 @@ export class Credits extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(960, 540, "background11");
+        this.add.image(960, 540, "creditsbackground");
         this.click = this.sound.add("clicksfx");
         this.huh = this.sound.add("huhsfx");
 
         // Botón para volver al menú
-        const buttonmenu = this.add.sprite(720, 70, "buttonmenu0").setInteractive();
+        const buttonmenu = this.add.sprite(1800, 40, "buttonmenu0").setInteractive();
         buttonmenu.setScale(1.5);
 
         buttonmenu.on("pointerdown", () => {
@@ -28,7 +28,7 @@ export class Credits extends Phaser.Scene {
         });
 
         // Botón para volver al juego
-        const buttonback = this.add.sprite(600, 650, "buttonback0").setInteractive();
+        const buttonback = this.add.sprite(40, 40, "buttonback0").setInteractive();
 
         // Verifica si el botón debe estar visible
         if (this.escenaActual === "Menu") {

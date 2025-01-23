@@ -4,11 +4,9 @@ export class Menu extends Phaser.Scene {
 
     }
 
-
     init() {
         this.escenaActual = "Menu";
     }
-
 
     create() {
 
@@ -42,24 +40,22 @@ export class Menu extends Phaser.Scene {
     }
 
     CreditsButton() {
-                //boton quieto
-                const buttoncreditsa = this.add.sprite(970, 530, "buttoncredits2").setInteractive();
-                buttoncreditsa.setScale(1.5);
-        
-                //presionar boton
-                buttoncreditsa.on("pointerdown", () => {
-                    buttoncreditsa.setTexture("buttoncredits3");
+        //boton quieto
+        const buttoncreditsa = this.add.sprite(970, 530, "buttoncredits2").setInteractive();
+        buttoncreditsa.setScale(1.5);
 
-                    
-                });
-                //soltar boton
-                buttoncreditsa.on("pointerup", () => {
-                    this.click.play();
-                    buttoncreditsa.setTexture("buttoncredits2");
-                    this.scene.launch("Credits", {
-                        escenaActual: this.escenaActual,
-                    });
-                });
+        //presionar boton
+        buttoncreditsa.on("pointerdown", () => {
+            buttoncreditsa.setTexture("buttoncredits3");
+
+        });
+        //soltar boton
+        buttoncreditsa.on("pointerup", () => {
+            this.click.play();
+            buttoncreditsa.setTexture("buttoncredits2");
+            this.scene.launch("Credits", {
+                escenaActual: this.escenaActual,
+            });
+        });
     }
-
 }

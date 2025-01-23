@@ -26,6 +26,7 @@ export class Preload extends Phaser.Scene {
         this.load.image("background12", "assets/fondo12.png");
         this.load.image("background13", "assets/fondo13.png");
         this.load.image("menubackground", "assets/fondomenu.png");
+        this.load.image("creditsbackground", "assets/fondocreditos.png");
         //ventanas
         this.load.image("window", "assets/ventana.png");
         this.load.image("window0", "assets/ventana0.png");
@@ -65,6 +66,8 @@ export class Preload extends Phaser.Scene {
         this.load.image("oversize3", "assets/over3.png");
         this.load.image("oversize4", "assets/over4.png");
         this.load.image("oversize5", "assets/over5.png");
+        this.load.image("oversize6", "assets/overdana.png");
+        this.load.image("oversize7", "assets/overdana2.png");
         //bras
         this.load.image("bra0", "assets/corpiño0.png");
         this.load.image("bra1", "assets/corpiño1.png");
@@ -160,6 +163,8 @@ export class Preload extends Phaser.Scene {
         this.load.image("acc1", "assets/acc1.png");
         this.load.image("acc2", "assets/acc2.png");
         this.load.image("acc3", "assets/acc3.png");
+        this.load.image("acc9", "assets/globo0.png");
+        this.load.image("acc10", "assets/globo1.png");
 
         this.load.image("acc4", "assets/acc4.png");
         this.load.image("acc5", "assets/acc5.png");
@@ -191,6 +196,8 @@ export class Preload extends Phaser.Scene {
         this.load.audio("spongebobsfx", "audio/Spongebob Stinky Sound Effect.mp3");
         this.load.audio("clicksfx", "audio/click.mp3");
         this.load.audio("huhsfx", "audio/huh.mp3");
+        this.load.audio("escuxasfx", "audio/escuxa.mp3");
+        this.load.audio("camsfx", "audio/cam.mp3");
         //imgen invisible
         this.load.image("empty", "assets/invisible.png");
         //UI
@@ -222,7 +229,6 @@ export class Preload extends Phaser.Scene {
         this.load.image("buttonmenu1", "assets/botonmenu1.png");
         this.load.image("buttonsave0", "assets/botoncaptura0.png");
         this.load.image("buttonsave1", "assets/botoncaptura1.png");
-
     }
 
     create() { }

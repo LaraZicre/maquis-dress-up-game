@@ -8,11 +8,13 @@ export class Game extends Phaser.Scene {
         this.escenaActual = "Game";
     }
 
-
     preload() { }
 
     create() {
-
+        this.game.config.renderType === Phaser.CANVAS
+            ? this.game.renderer.config.antialias = false
+            : this.game.renderer.gl.getExtension("OES_standard_derivatives");
+        Phaser.ScaleModes.NEAREST;
         // Agregar y reproducir la música de fondo
         this.backgroundMusic = this.sound.add("backgroundMusic", {
             loop: true, // Activar el loop
@@ -22,6 +24,9 @@ export class Game extends Phaser.Scene {
         this.backgroundMusic.play();
 
         this.ginosfx = this.sound.add("spongebobsfx");
+        this.huhsfx = this.sound.add("huhsfx");
+        this.escuxasfx = this.sound.add("escuxasfx");
+        this.camsfx = this.sound.add("camsfx");
         this.click = this.sound.add("clicksfx");
 
         this.backgroundMusic.play();
@@ -327,12 +332,14 @@ export class Game extends Phaser.Scene {
             {
                 type: "shirt",
                 variants: [
-                    { name: "over2", sprite: this.add.sprite(1400, 150, "oversize2").setInteractive() },
-                    { name: "over4", sprite: this.add.sprite(1450, 150, "oversize4").setInteractive() },
-                    { name: "over3", sprite: this.add.sprite(1500, 150, "oversize3").setInteractive() },
-                    { name: "over5", sprite: this.add.sprite(1550, 150, "oversize5").setInteractive() },
-                    { name: "over1", sprite: this.add.sprite(1600, 150, "oversize1").setInteractive() },
-                    { name: "over0", sprite: this.add.sprite(1650, 150, "oversize0").setInteractive() },
+                    { name: "over7", sprite: this.add.sprite(1400, 150, "oversize7").setInteractive() },
+                    { name: "over6", sprite: this.add.sprite(1450, 150, "oversize6").setInteractive() },
+                    { name: "over2", sprite: this.add.sprite(1500, 150, "oversize2").setInteractive() },
+                    { name: "over4", sprite: this.add.sprite(1550, 150, "oversize4").setInteractive() },
+                    { name: "over3", sprite: this.add.sprite(1600, 150, "oversize3").setInteractive() },
+                    { name: "over5", sprite: this.add.sprite(1650, 150, "oversize5").setInteractive() },
+                    { name: "over1", sprite: this.add.sprite(1700, 150, "oversize1").setInteractive() },
+                    { name: "over0", sprite: this.add.sprite(1750, 150, "oversize0").setInteractive() },
                 ],
 
                 targetZone: this.add.zone(283, 433, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
@@ -341,7 +348,7 @@ export class Game extends Phaser.Scene {
                 type: "tomshirt",
                 variants: [
 
-                    { name: "tomtshirt", sprite: this.add.sprite(1700, 150, "tomtshirt").setInteractive() },
+                    { name: "tomtshirt", sprite: this.add.sprite(1800, 150, "tomtshirt").setInteractive() },
                 ],
 
                 targetZone: this.add.zone(283, 428, 100, 100).setRectangleDropZone(20, 20),// Zona del torso
@@ -681,7 +688,9 @@ export class Game extends Phaser.Scene {
             { name: "acc0", x: 300, y: 480 },
             { name: "acc6", x: 280, y: 408 },
             { name: "acc7", x: 456, y: 350 },
-            { name: "acc8", x: 460, y: 344 }
+            { name: "acc8", x: 460, y: 344 },
+            { name: "acc9", x: 430, y: 240 },
+            { name: "acc10", x: 430, y: 240 },
         ];
         this.currentExtraIndex = 0; // Índice actual del accesorio
 
@@ -712,7 +721,7 @@ export class Game extends Phaser.Scene {
         //soltar boton
         screenshotButton.on("pointerup", () => {
             screenshotButton.setTexture("buttonsave0");
-            this.click.play();
+            this.camsfx.play();
             this.captureScreenshot(this, 57, 89, 485, 951);
         });
 
@@ -820,6 +829,14 @@ export class Game extends Phaser.Scene {
         // Volver al primer accesorio si se supera el último
         if (this.currentExtraIndex >= this.extras.length) {
             this.currentExtraIndex = 0;
+        }
+
+        if (this.currentExtraIndex == 5) {
+            this.huhsfx.play();
+        }
+
+        if (this.currentExtraIndex == 6) {
+            this.escuxasfx.play();
         }
 
         // Obtener el accesorio actual
