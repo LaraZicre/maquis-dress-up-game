@@ -13,7 +13,7 @@ const config = {
     scale: {
         mode: Phaser.Scale.FIT, // Ajusta el tamaño del juego manteniendo la proporción
         autoCenter: Phaser.Scale.CENTER_BOTH,
-     }, // Centra el juego en la ventana
+    }, // Centra el juego en la ventana
 
     scene: [Preload, Menu, Game, Credits],
 };

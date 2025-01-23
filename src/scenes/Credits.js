@@ -51,19 +51,19 @@ export class Credits extends Phaser.Scene {
         });
     }
 
-    update() {}
+    update() { }
 
     goToMenu() {
 
         if (this.escenaActual === "Game") {
-        this.backgroundMusic.stop();
-        this.scene.stop("Game");
-        this.scene.start("Menu");
+            this.backgroundMusic.stop();
+            this.scene.stop("Game");
+            this.scene.start("Menu");
 
         }
 
         else if (this.escenaActual === "Menu") {
-        this.scene.start("Menu");
+            this.scene.start("Menu");
 
         }
     }

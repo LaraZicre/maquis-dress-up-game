@@ -137,7 +137,6 @@ export class Game extends Phaser.Scene {
         //presionar boton
         buttonmenu.on("pointerdown", () => {
             buttonmenu.setTexture("buttonmenu1");
-
         });
 
         //soltar boton
@@ -154,6 +153,11 @@ export class Game extends Phaser.Scene {
         //presionar boton
         buttoncredits.on("pointerdown", () => {
             buttoncredits.setTexture("buttoncredits1");
+        });
+
+        //soltar boton
+        buttoncredits.on("pointerup", () => {
+            buttoncredits.setTexture("buttoncredits0");
             this.click.play();
             this.backgroundMusic.pause();
             // Lanza la escena de pausa y pasa la clave de la escena actual
@@ -161,11 +165,6 @@ export class Game extends Phaser.Scene {
                 escenaActual: this.escenaActual,
                 backgroundMusic: this.backgroundMusic,
             });
-        });
-
-        //soltar boton
-        buttoncredits.on("pointerup", () => {
-            buttoncredits.setTexture("buttoncredits0");
         });
 
         // Array que define los tipos de prendas y sus variantes
